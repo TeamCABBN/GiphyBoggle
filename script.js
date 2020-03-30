@@ -124,6 +124,37 @@ queryBtn.addEventListener("click", (event) => {
 
 });
 
+// Start with an array with the 16 above strings in it
+function randomLetterGenerator() {
+    var boggleCombinations = ["AAEEGN", "ELRTTY", "AOOTTW", "ABBJOO", "EHRTVW", "CIMOTU", "DISTTY", "EIOSST", "DELRVY", "ACHOPS", "HIMNQU", "EEINSU", "EEGHNW", "AFFKPS", "HLNNRZ", "DEILRX"];
+
+    //Choose a random string from the array
+    var randomLetters = "";
+
+    //Generate 0 to 16. runs for loop 16 times. 
+    for (let i = 0; i < 16; i++) {
+
+        //picks string from 1- 16 (different dice)
+        var randomIndex = Math.floor(Math.random() * boggleCombinations.length);
+
+        //pulls out string. set to current string.
+        var currentString = boggleCombinations[randomIndex];
+
+        // random letter from string between 0-5. Saved to letter variable 
+        var letter = currentString[Math.floor(Math.random() * currentString.length)];
+        console.log(letter);
+
+        //append letter onto random letter string. 
+        randomLetters += letter;
+
+        //remove from array
+        boggleCombinations.splice(randomIndex, 1)
+        console.log(boggleCombinations)
+    };
+    //return the string.
+    return randomLetters;
+}
+
 document.querySelector(".startTimer").addEventListener("click", () => {
     timer.start();
 });
