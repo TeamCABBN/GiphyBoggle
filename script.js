@@ -118,6 +118,26 @@ const timer = {
         console.log(this.currSecs);
     }
 }
+//Timer object
+/*
+To start timer call, 
+timer.start()
+
+To stop timer call, 
+timer.stop()
+
+to reset timer call,
+timer.reset()
+
+*/
+// creating a function for start button and to reveal boggle containers
+start.addEventListener("click",function(){
+    InputEl.classList.remove("hidden");
+    //Starting page: instruction page to be hidden
+    startpage.classList.add("hidden");
+    timer.start();
+    
+});
 
 //For testing purposes
 
