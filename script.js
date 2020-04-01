@@ -265,7 +265,6 @@ function endGame() {
 
 BoggleBlocks();
 
-<<<<<<< HEAD
 
 //Input checker
 $("#input-text").on("keyup",function () {
@@ -275,9 +274,32 @@ $("#input-text").on("keyup",function () {
         input.value = "";
         //Increase score
         //Create gif card createCard(input)
+        input.value = "";
+        let wordScore = 0;
+        if (wordlength < 3 ) {         
+            wordScore = 0;
+        }
+        if (wordlength < 4 ) {  // 3
+            wordScore = 1;
+        }
+        if (wordlength < 5 ) {  // 4
+            wordScore = 2;
+        }
+        if (wordlength < 6 ) {  // 5
+            wordScore = 3;
+        }
+        if (wordlength < 7 ) {  // 6
+            wordScore = 4;
+        }
+        if (wordlength < 8 ) {  // 7
+            wordScore = 5;
+        }
+        else {
+            wordScore = 6;
+        }
+        score += wordScore;
     }
 });
-=======
 // document.querySelector(".resetTimer").addEventListener("click", () => {
 //     timer.reset();
 // });
@@ -314,4 +336,3 @@ BoggleBlocks ();
 //   return randomLetterGenerator;
 
 // console.log(BoggleBlocks);
->>>>>>> 0674e1ac63240e0921c9731d875d539647a9c49f
