@@ -1,6 +1,8 @@
-// let inputEl = document.querySelector("#boggletext");
-// let queryBtn = document.querySelector(".queryBtn");
-// let output = document.querySelector(".output");
+/* 
+########################################
+Global variable declarations here
+########################################
+*/
 
 //global answers array
 let answerWords = [];
@@ -8,7 +10,22 @@ let answerWords = [];
 //global variable for random letters generated
 let letters = "";
 
+//Init score
+let score = 0;
+
+const inputEl = $("#search-bar");
+const scoreEl = document.querySelector(".score-display");
+const timeEl = document.querySelector(".time-display");
+
+/* 
+########################################
+Functions start here
+########################################
+*/
+
+
 //Function to query boggle api and then return answer to global answerwords array
+//By Ben
 const queryBoggleAPI = (letters) => {
 
     //Set query URL
@@ -48,19 +65,22 @@ const queryBoggleAPI = (letters) => {
         }
     });
 }
+
+//Function to query Gify API
+//By Nima
 //Have two here to choose between.
 //Giphy API for just a search
 //what will trigger this? i've used button below
-$("button").on("click", function() {
+const queryGiphyAPI = (inputWord) => {
     //note that the variable (and the output from the boggle is called "word")
-    var word = $(this).attr("word");
+    var word = inputWord;
     var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i&limit="1"`;
 
     $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-        .then(function(response) {
+        url: queryURL,
+        method: "GET"
+    })
+        .then(function (response) {
             console.log(response);
             var results = response.data;
 
@@ -69,26 +89,14 @@ $("button").on("click", function() {
                 var personImage = $("<img>");
                 personImage.attr("src", results[i].images.fixed_height.url);
                 gifDiv.prepend(personImage);
-            //note that the area that gifs appear (card?)
-            $("#gifs-appear-here").prepend(gifDiv);
+                //note that the area that gifs appear (card?)
+                // $("#gifs-appear-here").prepend(gifDiv);
             }
         });
-});
-
-
+}
 
 //Timer object
-/*
-To start timer call, 
-timer.start()
-
-To stop timer call, 
-timer.stop()
-
-to reset timer call,
-timer.reset()
-
-*/
+//By Ben F
 const timer = {
     //Default start seconds
     startSecs: 180,
@@ -143,84 +151,78 @@ const timer = {
     //Fn to display secs to page
     display: function () {
         console.log(this.currSecs);
+        timeEl.innerText = this.currSecs;
     }
 }
-//Timer object
-/*
-To start timer call, 
-timer.start()
 
-To stop timer call, 
-timer.stop()
 
-to reset timer call,
-timer.reset()
-
-*/
 // creating a function for start button and to reveal boggle containers
-start.addEventListener("click",function(){
-    InputEl.classList.remove("hidden");
+//By Nima
+const startGame = () => {
+    // InputEl.classList.remove("hidden");
     //Starting page: instruction page to be hidden
-    startpage.classList.add("hidden");
+    // startpage.classList.add("hidden");
+    letters = randomLetterGenerator();
+    queryBoggleAPI(letters);
+    BoggleBlocks(letters);
     timer.start();
-    
-});
+};
 
-//For testing purposes
-
-// Start with an array with the 16 above strings in it
-function randomLetterGenerator() {
+//Generates letters used in boggle from availble letters
+//By Claire
+const randomLetterGenerator = () => {
     var boggleCombinations = ["AAEEGN", "ELRTTY", "AOOTTW", "ABBJOO", "EHRTVW", "CIMOTU", "DISTTY", "EIOSST", "DELRVY", "ACHOPS", "HIMNQU", "EEINSU", "EEGHNW", "AFFKPS", "HLNNRZ", "DEILRX"];
-    
+
     //Choose a random string from the array
     var randomLetters = "";
-    
+
     //Generate 0 to 16. runs for loop 16 times. 
     for (let i = 0; i < 16; i++) {
-        
+
         //picks string from 1- 16 (different dice)
         var randomIndex = Math.floor(Math.random() * boggleCombinations.length);
-        
+
         //pulls out string. set to current string.
         var currentString = boggleCombinations[randomIndex];
-        
+
         // random letter from string between 0-5. Saved to letter variable 
         var letter = currentString[Math.floor(Math.random() * currentString.length)];
         //console.log(letter);
-        
+
         //append letter onto random letter string. 
         randomLetters += letter;
-        
+
         //remove from array
         boggleCombinations.splice(randomIndex, 1)
         //console.log(boggleCombinations)
     };
-    console.log(randomLetters);
+    // console.log(randomLetters);
     //return the string.
     return randomLetters;
 }
 
-function BoggleBlocks() {
-    console.log("Here");
+//Function that fills page elements with letters passed into it
+//By Claire
+const BoggleBlocks = (letters) => {
+
     for (let i = 0; i < 16; i++) {
         let boggleCube = document.getElementById(`boggleBox${i}`);
-        console.log(boggleCube);
+        // console.log(boggleCube);
+
+        let letter = letters[i];
+
+        if (letter == "Q") {
+            letter = "QU";
+        }
+        // console.log(letter);
+        boggleCube.innerText = letter;
     }
 }
 
-const startGame = () => {
-    letters = randomLetterGenerator();
-    queryBoggleAPI(letters);
-}
-
-// queryBtn.addEventListener("click", (event) => {
-
-//     startGame();
-
-// });
 //End the Game function
-function endGame() {
-    clearInterval(TIMER);
+//By Nima
+const endGame = () => {
+    timer.stop();
     //do we need to hide/ unhide something here
     //
     //
@@ -263,76 +265,58 @@ function endGame() {
     });
 }
 
-BoggleBlocks();
-
-
 //Input checker
-$("#input-text").on("keyup",function () {
-    let enteredWord = input.value.toLowerCase();
-    if (boggleArray.includes(enteredWord)) {
+//By Ben C
+const validateInput = (event) => {
+    console.log("Test");
+    let enteredWord = inputEl.val().toLowerCase();
+    if (answerWords.includes(enteredWord)) {
         console.log(enteredWord);
-        input.value = "";
+        inputEl.val("");
+        createCard(enteredWord);
+        
         //Increase score
-        //Create gif card createCard(input)
-        input.value = "";
         let wordScore = 0;
-        if (wordlength < 3 ) {         
+        let wordlength = enteredWord.length;
+        
+        if (wordlength < 3) {
             wordScore = 0;
-        }
-        if (wordlength < 4 ) {  // 3
+        }else if (wordlength < 4) {  // 3
             wordScore = 1;
-        }
-        if (wordlength < 5 ) {  // 4
+        }else if (wordlength < 5) {  // 4
             wordScore = 2;
-        }
-        if (wordlength < 6 ) {  // 5
+        }else if (wordlength < 6) {  // 5
             wordScore = 3;
-        }
-        if (wordlength < 7 ) {  // 6
+        }else if (wordlength < 7) {  // 6
             wordScore = 4;
-        }
-        if (wordlength < 8 ) {  // 7
+        } else if (wordlength < 8) {  // 7
             wordScore = 5;
         }
         else {
             wordScore = 6;
         }
         score += wordScore;
+        scoreEl.innerText = score;
     }
-});
-// document.querySelector(".resetTimer").addEventListener("click", () => {
-//     timer.reset();
-// });
-
-
-var boggleLetters = randomLetterGenerator();
-// var boggleLetters = "ADRGYUIQHNJKIUYT";
-
- // dewwefewfefew
-
-console.log(boggleLetters);
-
-function BoggleBlocks() {
-
-for (let i= 0; i < 16; i++) {
-let boggleCube= document.getElementById(`boggleBox${i}`);
-console.log(boggleCube);
-
-let letter = boggleLetters[i];
-
-    if (letter == "Q") { 
-        letter = "QU";
-    }
-
-console.log(letter);
-boggleCube.innerText = letter;
-}
 }
 
-BoggleBlocks ();
+const createCard = (word) => {
+    console.log("Create card for word "+ word);
+    gifURL = queryGiphyAPI(word);
+}
 
-//   randomLetterGenerator.push("");
-//   document.getElementById(".boogleCube").innerHTML = localStprage.randomLetterGenerator;
-//   return randomLetterGenerator;
+/* 
+########################################
+Code to run on page load
+########################################
+*/
 
-// console.log(BoggleBlocks);
+startGame();
+
+
+/* 
+########################################
+Event Listeners here
+########################################
+*/
+inputEl.on("keyup", validateInput);
