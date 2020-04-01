@@ -1,6 +1,6 @@
-let inputEl = document.querySelector("#boggletext");
-let queryBtn = document.querySelector(".queryBtn");
-let output = document.querySelector(".output");
+// let inputEl = document.querySelector("#boggletext");
+// let queryBtn = document.querySelector(".queryBtn");
+// let output = document.querySelector(".output");
 
 //global answers array
 let answerWords = [];
@@ -28,14 +28,14 @@ const queryBoggleAPI = (letters) => {
 
             //Testing
             console.log(response);
-            output.innerText = "";
+            //output.innerText = "";
 
             //For each word in response array convert to lowercase then push to global answer words array
             response.forEach(word => {
                 answerWords.push(word.toLowerCase());
 
                 //Testing
-                output.innerText += word.toLowerCase() + "\n";
+                //output.innerText += word.toLowerCase() + "\n";
             });
 
             //Testing
@@ -158,11 +158,11 @@ const startGame = () => {
     queryBoggleAPI(letters);
 }
 
-queryBtn.addEventListener("click", (event) => {
+// queryBtn.addEventListener("click", (event) => {
 
-    startGame();
+//     startGame();
 
-});
+// });
 //End the Game function
 function endGame(){
     clearInterval(TIMER);
