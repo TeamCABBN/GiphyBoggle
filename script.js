@@ -48,6 +48,32 @@ const queryBoggleAPI = (letters) => {
         }
     });
 }
+//Have two here to choose between.
+//Giphy API for just a search
+//what will trigger this? i've used button below
+$("button").on("click", function() {
+    //note that the variable (and the output from the boggle is called "word")
+    var word = $(this).attr("word");
+    var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i&limit="1"`;
+
+    $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        .then(function(response) {
+            console.log(response);
+            var results = response.data;
+
+            for (var i = 0; i < results.length; i++) {
+                var gifDiv = $("<div>");
+                var personImage = $("<img>");
+                personImage.attr("src", results[i].images.fixed_height.url);
+                gifDiv.prepend(personImage);
+            //note that the area that gifs appear (card?)
+            $("#gifs-appear-here").prepend(gifDiv);
+            }
+        });
+});
 
 
 //Timer object
