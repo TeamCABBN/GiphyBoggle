@@ -48,6 +48,32 @@ const queryBoggleAPI = (letters) => {
         }
     });
 }
+//Have two here to choose between.
+//Giphy API for just a search
+//what will trigger this? i've used button below
+$("button").on("click", function() {
+    //note that the variable (and the output from the boggle is called "word")
+    var word = $(this).attr("word");
+    var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i&limit="1"`;
+
+    $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+        .then(function(response) {
+            console.log(response);
+            var results = response.data;
+
+            for (var i = 0; i < results.length; i++) {
+                var gifDiv = $("<div>");
+                var personImage = $("<img>");
+                personImage.attr("src", results[i].images.fixed_height.url);
+                gifDiv.prepend(personImage);
+            //note that the area that gifs appear (card?)
+            $("#gifs-appear-here").prepend(gifDiv);
+            }
+        });
+});
 
 
 
@@ -119,6 +145,26 @@ const timer = {
         console.log(this.currSecs);
     }
 }
+//Timer object
+/*
+To start timer call, 
+timer.start()
+
+To stop timer call, 
+timer.stop()
+
+to reset timer call,
+timer.reset()
+
+*/
+// creating a function for start button and to reveal boggle containers
+start.addEventListener("click",function(){
+    InputEl.classList.remove("hidden");
+    //Starting page: instruction page to be hidden
+    startpage.classList.add("hidden");
+    timer.start();
+    
+});
 
 //For testing purposes
 
@@ -219,6 +265,7 @@ function endGame() {
 
 BoggleBlocks();
 
+<<<<<<< HEAD
 
 //Input checker
 $("#input-text").on("keyup",function () {
@@ -230,3 +277,41 @@ $("#input-text").on("keyup",function () {
         //Create gif card createCard(input)
     }
 });
+=======
+// document.querySelector(".resetTimer").addEventListener("click", () => {
+//     timer.reset();
+// });
+
+
+var boggleLetters = randomLetterGenerator();
+// var boggleLetters = "ADRGYUIQHNJKIUYT";
+
+ // dewwefewfefew
+
+console.log(boggleLetters);
+
+function BoggleBlocks() {
+
+for (let i= 0; i < 16; i++) {
+let boggleCube= document.getElementById(`boggleBox${i}`);
+console.log(boggleCube);
+
+let letter = boggleLetters[i];
+
+    if (letter == "Q") { 
+        letter = "QU";
+    }
+
+console.log(letter);
+boggleCube.innerText = letter;
+}
+}
+
+BoggleBlocks ();
+
+//   randomLetterGenerator.push("");
+//   document.getElementById(".boogleCube").innerHTML = localStprage.randomLetterGenerator;
+//   return randomLetterGenerator;
+
+// console.log(BoggleBlocks);
+>>>>>>> 0674e1ac63240e0921c9731d875d539647a9c49f
