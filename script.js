@@ -163,6 +163,51 @@ queryBtn.addEventListener("click", (event) => {
     startGame();
 
 });
+//End the Game function
+function endGame(){
+    clearInterval(TIMER);
+    //do we need to hide/ unhide something here
+    //
+    //
+    //
+    //
+    var playerName = prompt("Type in your first name!")
+    var scoreboard ={
+      name: playerName,
+      score: score
+    }
+    // 
+    //
+    //
+    //
+    //
+    //get item current "score" and historical scores
+    var loadScores = localStorage.getItem("score")
+    //check for storage
+    if (loadScores) {
+    loadScores = JSON.parse(loadScores);
+    
+    }else{
+      loadScores = []
+    }
+    //push adds on to the existing array
+    loadScores.push(scoreboard);
+    console.log(loadScores);
+    //change to string
+    var loadScoresstring = JSON.stringify(loadScores);
+    console.log(loadScoresstring);
+    //send array back to local storage
+    localStorage.setItem("score",loadScoresstring);
+    //append list
+    
+    loadScores.forEach(function(entry){
+      //to construct html input for list 
+      var listhtml = "<li>"+entry.name+"  -  "+entry.score+"</li>";
+      //+ = appends to the end 
+      list.innerHTML += listhtml;
+      });
+    }
+    
 
 document.querySelector(".startTimer").addEventListener("click", () => {
     timer.start();
