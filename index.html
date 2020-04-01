@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>GiphyBoggle!</title>
+    
+    <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    
+    <!-- Semantic UI CSS and script -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/39ea56fe5e.js" crossorigin="anonymous"></script>
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-<!--Thank you. Is there anything in particular you want me to do? -N -->
-<!-- look into semantic UI and try to see how it works and we will try and replicate this image, sending on slack-->
-<!--Ok!-->
-<!--The grid will be 4x4, not 3x3 that was my bad and where the rat pops up we will use cards-->
-<!--I'm just going to work on the javascript part for now- NS-->
-
 
 <body>
     <header>
@@ -32,7 +36,7 @@
             <div class="ui grid">
 
                 <!--Container for the Boggle 4x4 letter grid-->
-                <div class="eight wide column gameGridBox">
+                <div class="six wide column gameGridBox">
                     <div class="ui grid">
                         <div class="four wide column boggleBox">
                             <button id="boggleBox0" class="ui inverted primary button"></button>
@@ -83,25 +87,76 @@
                             <button id="boggleBox15" class="ui inverted primary button"></button>
                         </div>
                     </div>
+                    <div class="ui grid">
+                        <div class="sixteen wide column">
+                            <input type="text" class="searchBar" value="" placeholder="Type the words you see here..."
+                                id="search-bar">
+                            <button class="customIcon"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
 
                 </div>
 
-                <div class="seven wide column">
+                <div class="nine wide column">
                     <div class="ui grid">
-                        <div class="eight wide column">asdsad</div>
-                        <div class="seven wide column">sadsad</div>
+                        <div class="sixteen wide column scoreSubBox">
+                            <h1 class="ui yellow inverted header">TIME: <span></span></h1>
+                            <h1 class="ui yellow inverted header">SCORE: <span></span></h1>
+                        </div>
                     </div>
                     <div class="ui grid">
-                        <div class="sixteen wide column">
-                            <h1>Ape Frog Rat Cat Mouse House Glass</h1>
-                        </div>
-                        <div class="sixteen wide column">
-                            <div class="word-card">
-                                <div class="inner-container">
-                                    <img src="https://media0.giphy.com/media/VgU9D8avczJWJi08dT/200.gif?cid=e1bb72ffeb78877cff453c521fab714ce5c8bdd47eaa7492&rid=200.gif" class="gif">
+                        <div class="sixteen wide column gifBox">
+                            <h1 class="ui blue inverted header">FOUND WORDS BELOW</h1>
+                            <div class="sixteen wide column gifCardStorageBox">
+                                <div class="ui three column grid">
+                                    <div class="column">
+                                        <div class="ui fluid card spacer">
+                                            <div class="image">
+                                                <img
+                                                    src="https://superscience.scholastic.com/content/dam/classroom-magazines/superscience/issues/2019-20/090119/hanging-tough/SS1-090119-01-HangingTough-Medium.jpg">
+                                            </div>
+                                            <div class="content">
+                                                <a class="header">BEN</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="ui fluid card spacer">
+                                            <div class="image">
+                                                <img
+                                                    src="https://superscience.scholastic.com/content/dam/classroom-magazines/superscience/issues/2019-20/090119/hanging-tough/SS1-090119-01-HangingTough-Medium.jpg">
+                                            </div>
+                                            <div class="content">
+                                                <a class="header">ALEX</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="ui fluid card spacer">
+                                            <div class="image">
+                                                <img
+                                                    src="https://superscience.scholastic.com/content/dam/classroom-magazines/superscience/issues/2019-20/090119/hanging-tough/SS1-090119-01-HangingTough-Medium.jpg">
+                                            </div>
+                                            <div class="content">
+                                                <a class="header">NIMA</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="column">
+                                        <div class="ui fluid card spacer">
+                                            <div class="image">
+                                                <img
+                                                    src="https://superscience.scholastic.com/content/dam/classroom-magazines/superscience/issues/2019-20/090119/hanging-tough/SS1-090119-01-HangingTough-Medium.jpg">
+                                            </div>
+                                            <div class="content">
+                                                <a class="header">CLAIRE</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h3 class="word-title">WORD</h3>
                             </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -111,7 +166,7 @@
     <footer>
 
     </footer>
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
