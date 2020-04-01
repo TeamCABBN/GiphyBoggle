@@ -209,14 +209,14 @@ function endGame(){
     }
     
 
-document.querySelector(".startTimer").addEventListener("click", () => {
-    timer.start();
-});
+// document.querySelector(".startTimer").addEventListener("click", () => {
+//     timer.start();
+// });
 
-document.querySelector(".stopTimer").addEventListener("click", () => {
-    timer.stop();
-});
+// document.querySelector(".stopTimer").addEventListener("click", () => {
+//     timer.stop();
+// });
 
-document.querySelector(".resetTimer").addEventListener("click", () => {
-    timer.reset();
-});
+// document.querySelector(".resetTimer").addEventListener("click", () => {
+//     timer.reset();
+// });
