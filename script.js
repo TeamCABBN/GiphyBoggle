@@ -220,3 +220,36 @@ function endGame(){
 // document.querySelector(".resetTimer").addEventListener("click", () => {
 //     timer.reset();
 // });
+
+
+var boggleLetters = randomLetterGenerator();
+// var boggleLetters = "ADRGYUIQHNJKIUYT";
+
+ // dewwefewfefew
+
+console.log(boggleLetters);
+
+function BoggleBlocks() {
+
+for (let i= 0; i < 16; i++) {
+let boggleCube= document.getElementById(`boggleBox${i}`);
+console.log(boggleCube);
+
+let letter = boggleLetters[i];
+
+    if (letter == "Q") { 
+        letter = "QU";
+    }
+
+console.log(letter);
+boggleCube.innerText = letter;
+}
+}
+
+BoggleBlocks ();
+
+//   randomLetterGenerator.push("");
+//   document.getElementById(".boogleCube").innerHTML = localStprage.randomLetterGenerator;
+//   return randomLetterGenerator;
+
+// console.log(BoggleBlocks);
