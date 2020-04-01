@@ -1,0 +1,42 @@
+body {
+    min-height: 100%;
+    background-image: linear-gradient(to bottom, #AAA9AD, #848689);
+    color: white;
+}
+
+.headerBox {
+    align-self: left;
+    text-align: center;
+    margin-top: 1rem;
+    margin-left: 4rem;
+    margin-right: 90rem;
+    margin-bottom: 1rem;
+    background-color: #1F262A;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-radius: 7px;
+    box-shadow: 0px 0px 8px 3px #A291FB;
+}
+
+.gameGridBox {
+    align-self: left;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 1rem;
+    background-color: #1F262A;
+    border-radius: 7px;
+    box-shadow: 0px 0px 8px 3px #A291FB;
+}
+
+.boggleBox {
+    width: 22vh;
+    height: 22vh;
+}
+
+button {
+    height: 100%;
+    width: 100%;
+}
