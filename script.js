@@ -13,13 +13,15 @@ let letters = "";
 //Init score
 let score = 0;
 
+//Page elements
 const inputEl = $("#search-bar");
 const scoreEl = document.querySelector(".score-display");
 const timeEl = document.querySelector(".time-display");
+const gifBoxContainer = document.querySelector(".gifCardStorageBox");
 
 /* 
 ########################################
-Functions start here
+Function declarations start here
 ########################################
 */
 
@@ -74,7 +76,7 @@ const queryBoggleAPI = (letters) => {
 const queryGiphyAPI = (inputWord) => {
     //note that the variable (and the output from the boggle is called "word")
     var word = inputWord;
-    var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i&limit="1"`;
+    var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&limit=1&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i`;
 
     $.ajax({
         url: queryURL,
@@ -83,6 +85,11 @@ const queryGiphyAPI = (inputWord) => {
         .then(function (response) {
             console.log(response);
             var results = response.data;
+
+            //For the lols
+            var gifNode = document.createElement("img");
+            gifNode.setAttribute("src", response.data[0].images.original.url);
+            gifBoxContainer.prepend(gifNode);
 
             for (var i = 0; i < results.length; i++) {
                 var gifDiv = $("<div>");
@@ -150,7 +157,7 @@ const timer = {
 
     //Fn to display secs to page
     display: function () {
-        console.log(this.currSecs);
+        // console.log(this.currSecs);
         timeEl.innerText = this.currSecs;
     }
 }
