@@ -40,3 +40,17 @@ button {
     height: 100%;
     width: 100%;
 }
+
+.word-card {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 250px;
+    background-color: #121212;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.word-card img {
+    width: 100%
+}

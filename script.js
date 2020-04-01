@@ -50,6 +50,7 @@ const queryBoggleAPI = (letters) => {
 }
 
 
+
 //Timer object
 /*
 To start timer call, 
@@ -153,6 +154,14 @@ function randomLetterGenerator() {
     return randomLetters;
 }
 
+function BoggleBlocks() {
+    console.log("Here");
+    for (let i = 0; i < 16; i++) {
+        let boggleCube = document.getElementById(`boggleBox${i}`);
+        console.log(boggleCube);
+    }
+}
+
 const startGame = () => {
     letters = randomLetterGenerator();
     queryBoggleAPI(letters);
@@ -164,7 +173,7 @@ const startGame = () => {
 
 // });
 //End the Game function
-function endGame(){
+function endGame() {
     clearInterval(TIMER);
     //do we need to hide/ unhide something here
     //
@@ -172,9 +181,9 @@ function endGame(){
     //
     //
     var playerName = prompt("Type in your first name!")
-    var scoreboard ={
-      name: playerName,
-      score: score
+    var scoreboard = {
+        name: playerName,
+        score: score
     }
     // 
     //
@@ -185,10 +194,10 @@ function endGame(){
     var loadScores = localStorage.getItem("score")
     //check for storage
     if (loadScores) {
-    loadScores = JSON.parse(loadScores);
-    
-    }else{
-      loadScores = []
+        loadScores = JSON.parse(loadScores);
+
+    } else {
+        loadScores = []
     }
     //push adds on to the existing array
     loadScores.push(scoreboard);
@@ -197,26 +206,27 @@ function endGame(){
     var loadScoresstring = JSON.stringify(loadScores);
     console.log(loadScoresstring);
     //send array back to local storage
-    localStorage.setItem("score",loadScoresstring);
+    localStorage.setItem("score", loadScoresstring);
     //append list
-    
-    loadScores.forEach(function(entry){
-      //to construct html input for list 
-      var listhtml = "<li>"+entry.name+"  -  "+entry.score+"</li>";
-      //+ = appends to the end 
-      list.innerHTML += listhtml;
-      });
+
+    loadScores.forEach(function (entry) {
+        //to construct html input for list 
+        var listhtml = "<li>" + entry.name + "  -  " + entry.score + "</li>";
+        //+ = appends to the end 
+        list.innerHTML += listhtml;
+    });
+}
+
+BoggleBlocks();
+
+
+//Input checker
+$("#input-text").on("keyup",function () {
+    let enteredWord = input.value.toLowerCase();
+    if (boggleArray.includes(enteredWord)) {
+        console.log(enteredWord);
+        input.value = "";
+        //Increase score
+        //Create gif card createCard(input)
     }
-    
-
-// document.querySelector(".startTimer").addEventListener("click", () => {
-//     timer.start();
-// });
-
-// document.querySelector(".stopTimer").addEventListener("click", () => {
-//     timer.stop();
-// });
-
-// document.querySelector(".resetTimer").addEventListener("click", () => {
-//     timer.reset();
-// });
+});
