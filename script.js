@@ -91,6 +91,7 @@ const queryGiphyAPI = (inputWord) => {
             gifNode.setAttribute("src", response.data[0].images.original.url);
             gifBoxContainer.prepend(gifNode);
 
+            //Old code,
             for (var i = 0; i < results.length; i++) {
                 var gifDiv = $("<div>");
                 var personImage = $("<img>");
