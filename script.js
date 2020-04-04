@@ -73,35 +73,7 @@ const queryBoggleAPI = (letters) => {
 //Have two here to choose between.
 //Giphy API for just a search
 //what will trigger this? i've used button below
-const queryGiphyAPI = (inputWord) => {
-    //note that the variable (and the output from the boggle is called "word")
-    var word = inputWord;
-    var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&limit=1&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i`;
 
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
-        .then(function (response) {
-            console.log(response);
-            var results = response.data;
-
-            //For the lols
-            var gifNode = document.createElement("img");
-            gifNode.setAttribute("src", response.data[0].images.original.url);
-            gifBoxContainer.prepend(gifNode);
-
-            //Old code,
-            for (var i = 0; i < results.length; i++) {
-                var gifDiv = $("<div>");
-                var personImage = $("<img>");
-                personImage.attr("src", results[i].images.fixed_height.url);
-                gifDiv.prepend(personImage);
-                //note that the area that gifs appear (card?)
-                // $("#gifs-appear-here").prepend(gifDiv);
-            }
-        });
-}
 
 //Timer object
 //By Ben F
@@ -307,11 +279,99 @@ const validateInput = (event) => {
         scoreEl.innerText = score;
     }
 }
-
+//create card gipphy 
 const createCard = (word) => {
-    console.log("Create card for word "+ word);
-    gifURL = queryGiphyAPI(word);
-}
+
+        //note that the variable (and the output from the boggle is called "word")
+        var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&limit=1&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i`;
+    
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        })
+            .then(function (response) {
+                console.log(response);
+    
+                let gifURL = response.data[0].images.original.url;
+
+                let cardHTML = `
+                <div class="column">
+                <div class="ui fluid card spacer">
+                    <div class="image">
+                        <img
+                            src="${gifURL}">
+                    </div>
+                    <div class="content">
+                        <p class="header">${word.toUpperCase()}</p>
+                    </div>
+                </div>
+            </div>
+                `
+
+                let currentHTML = gifBoxContainer.innerHTML;
+                let newHtml = cardHTML + currentHTML;
+
+                gifBoxContainer.innerHTML = newHtml;
+
+                // // set src attribute to images and append to html 
+                // var wordImage = $("<img>");
+                // wordImage.attr("img", gifURL);
+                // $(searchedWord).append(word);
+                // $(searchedWord).append(gifURL);
+                // console.log("Create card for word "+ word);
+                // console.log("create gif image" + gifURL);
+                // $("#gifs-appear-here").prepend(gifURL.word);
+            });
+            console.log(word);
+        }
+
+        // generating new cards. 
+        // for (let i = 0; i > createCard.length; i ++);
+        // searchedWord.innerText = createCard,
+        //  gifURL
+        
+
+
+                    //Old code,
+                // for (var i = 0; i < results.length; i++) {
+                //     var gifDiv = $("<div>");
+                //     var personImage = $("<img>");
+                //     personImage.attr("src", results[i].images.fixed_height.url);
+                //     gifDiv.prepend(personImage);
+                //     //note that the area that gifs appear (card?)
+                //     // $("#gifs-appear-here").prepend(gifDiv);
+                // }
+      
+
+
+
+// url will be returned from api plus word it represents.
+// filling in the cards with word and url of giff. Add fucntion that adds fucntion to the page. 
+
+//when user clicks submit (giphy click event)
+// // $(".searchedWord").on("click", function () {
+// console.log(searchedWord);
+// // // word property value being stored
+
+// //query URL of word 
+//     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+//     word + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+// // Ajax request with queryURL 
+// $.ajax({
+//     url: queryURL,
+//     method: "GET"
+// })
+
+// .then(function(response) {
+//     console.log(queryURL);
+//     console.log(response);
+
+//store requested data 
+
+
+
+// })
 
 /* 
 ########################################
@@ -328,3 +388,5 @@ Event Listeners here
 ########################################
 */
 inputEl.on("keyup", validateInput);
+
+
