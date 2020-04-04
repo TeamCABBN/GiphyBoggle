@@ -18,6 +18,9 @@ const inputEl = $("#search-bar");
 const scoreEl = document.querySelector(".score-display");
 const timeEl = document.querySelector(".time-display");
 const gifBoxContainer = document.querySelector(".gifCardStorageBox");
+const startBtn = document.querySelector(".startBtn");
+const preGameEl = document.querySelector(".preGame");
+const duringGameEl = document.querySelector(".during-game");
 
 /* 
 ########################################
@@ -122,7 +125,7 @@ const timer = {
     },
 
     //reset timer function
-    reset: function (seconds) {
+    reset: function (seconds = this.startSecs) {
         this.startSecs = seconds;
         this.currSecs = this.startSecs;
         this.display();
@@ -131,18 +134,27 @@ const timer = {
     //Fn to display secs to page
     display: function () {
         // console.log(this.currSecs);
-        timeEl.innerText = this.currSecs;
+        let mins = Math.floor(this.currSecs/60);
+        let secs = this.currSecs % 60;
+        secs = secs<10? "0" + secs: secs;
+        formattedString = mins + ":" + secs;
+        
+        // timeEl.innerText = this.currSecs;
+        timeEl.innerText = formattedString;
     }
 }
 
 
 // creating a function for start button and to reveal boggle containers
 //By Nima
-const startGame = () => {
-    // InputEl.classList.remove("hidden");
+const startGame = (event) => {
+    preGameEl.classList.add("hidden");
+    duringGameEl.classList.remove("hidden");
     //Starting page: instruction page to be hidden
     // startpage.classList.add("hidden");
     letters = randomLetterGenerator();
+    score = 0;
+    timer.reset();
     queryBoggleAPI(letters);
     BoggleBlocks(letters);
     timer.start();
@@ -281,6 +293,7 @@ const validateInput = (event) => {
 }
 //create card gipphy 
 const createCard = (word) => {
+<<<<<<< HEAD
 
         //note that the variable (and the output from the boggle is called "word")
         var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&limit=1&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i`;
@@ -372,6 +385,15 @@ const createCard = (word) => {
 
 
 // })
+=======
+    console.log("Create card for word "+ word);
+    gifURL = queryGiphyAPI(word);
+
+
+
+
+}
+>>>>>>> 536d15c7bd93787beaef6c2ac28af74ddaa62dae
 
 /* 
 ########################################
@@ -379,7 +401,6 @@ Code to run on page load
 ########################################
 */
 
-startGame();
 
 
 /* 
@@ -389,4 +410,8 @@ Event Listeners here
 */
 inputEl.on("keyup", validateInput);
 
+<<<<<<< HEAD
 
+=======
+startBtn.addEventListener("click", startGame);
+>>>>>>> 536d15c7bd93787beaef6c2ac28af74ddaa62dae

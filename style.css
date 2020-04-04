@@ -7,9 +7,9 @@ body {
 .headerBox {
     text-align: center;
     margin-top: 1rem;
-    margin-left: 3rem;
-    margin-right: 3.5rem;
-    margin-bottom: 1rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 2rem;
     background-color: #1F262A;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -19,21 +19,20 @@ body {
 
 .gameGridBox {
     align-self: left;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    margin-top: 1rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
-    margin-bottom: 1rem;
+    padding-bottom: 0rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+
+    margin-top: 0rem;
     background-color: #1F262A;
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
-    min-height: 100%;
 }
 
 .boggleBox {
     width: 100%;
     height: 181.017px;
+
 }
 
 button {
@@ -46,9 +45,6 @@ button {
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-top: 1rem;
-    margin-left: 1rem;
-    margin-right: 4rem;
-    margin-bottom: 1rem;
     background-color: #1F262A;
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
@@ -58,10 +54,7 @@ button {
 .scoreSubBox {
     padding-top: 1rem;
     padding-bottom: 1rem;
-    margin-top: 1rem;
-    margin-bottom: 0rem;
-    margin-left: 1rem;
-    margin-right: 4rem;
+    margin-top: 0rem;
     background-color: #1F262A;
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
@@ -71,25 +64,19 @@ button {
     text-align: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
-    margin-top: 1rem;
-    margin-left: 0rem;
-    margin-right: 0rem;
-    margin-bottom: 0rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 0rem;
     background-image: linear-gradient(to bottom, #A291FB, violet);
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
     min-height: 100%;
 }
 
-.spacer {
-    margin-left: 1rem;
-    margin-right: 1rem;
-}
-
 .searchBar {
     font-size: 3rem;
     background: none;
-    border-bottom: 1px solid #fbd786;
+    border-bottom: 2px solid #ffe21f;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -100,9 +87,69 @@ button {
 .customIcon {
     background: none;
     border: none;
-    color: #fbd786;
+    color: #ffe21f;
     font-size: 3rem;
     width: 10%;
     height: 10%;
 
+}
+
+.outermost {
+    margin-top: 1rem;
+    margin-left: 4rem;
+    margin-right: 5rem;
+    margin-bottom: 1rem;
+}
+
+
+
+.rules-container {
+    background-color: #1F262A;
+    margin-top: 0rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    margin-left: 0rem;
+    margin-bottom: 0rem;
+    border-radius: 7px;
+    box-shadow: 0px 0px 8px 3px #A291FB;
+}
+
+.rules-list {
+    font-size: 2rem !important;
+}
+
+.button-box {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.startBtn {
+    width: 300px;
+    justify-self: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.button-content {
+    font-size: 3rem !important;
+    text-align: left !important;
+}
+
+.gifCard {
+    background-color: #1F262A !important;
+    box-shadow: 0px 0px 8px 3px white !important;
+    border-radius: 7px 7px 26px 26px !important;
+}
+
+.gifCard .header {
+    color: #54c8ff !important;
+}
+
+.spacer {
+    margin-left: 0rem !important;
+    margin-right: 0rem !important;
 }
