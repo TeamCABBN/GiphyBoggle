@@ -21,6 +21,7 @@ const gifBoxContainer = document.querySelector(".gifCardStorageBox");
 const startBtn = document.querySelector(".startBtn");
 const preGameEl = document.querySelector(".preGame");
 const duringGameEl = document.querySelector(".during-game");
+const playAgainBtn = document.querySelector(".play-again-btn");
 
 /* 
 ########################################

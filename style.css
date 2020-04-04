@@ -135,6 +135,45 @@ button {
     justify-self: center;
 }
 
+.after-game {
+    color: white;
+}
+
+.after-game header {
+    font-size: 3rem;
+}
+
+.after-game>.content {
+    background: #1F262A!important;
+}
+
+.after-game>.content>p{
+    font-size: 2rem;
+}
+
+.unguessed-words {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.unguessed-words p {
+    width: 33%;
+    margin: 5px 0 5px, 0px;
+    padding: 0;
+    line-height: normal;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+}
+
+.play-again-btn {
+    margin-top: 15px!important;
+    width: 33%;
+}
+
 .hidden {
     display: none !important;
 }
