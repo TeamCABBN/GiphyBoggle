@@ -4,12 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>GiphyBoggle!</title>
-    
+
     <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
     <!-- Semantic UI CSS and script -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
@@ -32,10 +33,11 @@
     </header>
     <main>
         <!--Holds all content in the body area-->
-        <div class="container">
+        <div class="container outermost">
             <div class="ui grid">
 
                 <!--Container for the Boggle 4x4 letter grid-->
+
                 <div class="six wide column gameGridBox">
                     <div class="ui grid">
                         <div class="four wide column boggleBox">
@@ -81,12 +83,14 @@
                             <button id="boggleBox13" class="ui inverted primary button"></button>
                         </div>
                         <div class="four wide column boggleBox">
-                            <button id="boggleBox14"class="ui inverted primary button"></button>
+                            <button id="boggleBox14" class="ui inverted primary button"></button>
                         </div>
                         <div class="four wide column boggleBox">
                             <button id="boggleBox15" class="ui inverted primary button"></button>
                         </div>
                     </div>
+
+
                     <div class="ui grid">
                         <div class="sixteen wide column">
                             <input type="text" class="searchBar" value="" placeholder="Type the words you see here..."
@@ -97,7 +101,7 @@
 
                 </div>
 
-                <div class="nine wide column">
+                <div class="ten wide column">
                     <div class="ui grid">
                         <div class="sixteen wide column scoreSubBox">
                             <h1 class="ui yellow inverted header">TIME: <span class="time-display">180</span></h1>

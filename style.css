@@ -8,7 +8,7 @@ body {
     text-align: center;
     margin-top: 1rem;
     margin-left: 3rem;
-    margin-right: 3.5rem;
+    margin-right: 3rem;
     margin-bottom: 1rem;
     background-color: #1F262A;
     padding-top: 1rem;
@@ -22,13 +22,10 @@ body {
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-top: 1rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
-    margin-bottom: 1rem;
     background-color: #1F262A;
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
-    min-height: 100%;
+    min-height: 80%;
 }
 
 .boggleBox {
@@ -46,9 +43,6 @@ button {
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-top: 1rem;
-    margin-left: 1rem;
-    margin-right: 4rem;
-    margin-bottom: 1rem;
     background-color: #1F262A;
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
@@ -59,9 +53,7 @@ button {
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-top: 1rem;
-    margin-bottom: 0rem;
-    margin-left: 1rem;
-    margin-right: 4rem;
+
     background-color: #1F262A;
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
@@ -72,9 +64,6 @@ button {
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-top: 1rem;
-    margin-left: 0rem;
-    margin-right: 0rem;
-    margin-bottom: 0rem;
     background-image: linear-gradient(to bottom, #A291FB, violet);
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
@@ -105,4 +94,15 @@ button {
     width: 10%;
     height: 10%;
 
+}
+
+.outermost {
+    margin-top: 1rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    margin-bottom: 1rem;
+}
+
+.inner-container {
+    padding-right: 0.5rem;
 }
