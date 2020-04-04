@@ -6,6 +6,7 @@ Global variable declarations here
 
 //global answers array
 let answerWords = [];
+const correctWords = [];  //generates new array with correctly guessed words
 
 //global variable for random letters generated
 let letters = "";
@@ -257,12 +258,30 @@ const endGame = () => {
     });
 }
 
+//array depricator
+//By Ben C
+//creates new array with correctly guessed words removed - also creates a new array of corect words
+function remove(enteredWord) {
+    let index = answerWords.indexOf(enteredWord);
+    console.log(index);
+    if (index !== -1) {
+        answerWords.splice(index, 1);
+        correctWords.push(enteredWord);
+    }
+}
+
 //Input checker
 //By Ben C
-const validateInput = (event) => {
+const validateInput = (event) => {  // Ben F why have you used event here? Just wondering?
     console.log("Test");
     let enteredWord = inputEl.val().toLowerCase();
+    
+    console.log("before", answerWords.length);
+    
     if (answerWords.includes(enteredWord)) {
+        remove(enteredWord);
+        
+        console.log("after", answerWords.length);
         console.log(enteredWord);
         inputEl.val("");
         createCard(enteredWord);
