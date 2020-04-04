@@ -313,7 +313,6 @@ const validateInput = (event) => {  // Ben F why have you used event here? Just 
 }
 //create card gipphy 
 const createCard = (word) => {
-<<<<<<< HEAD
 
         //note that the variable (and the output from the boggle is called "word")
         var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&limit=1&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i`;
@@ -356,7 +355,6 @@ const createCard = (word) => {
                 // $("#gifs-appear-here").prepend(gifURL.word);
             });
             console.log(word);
-        }
 
         // generating new cards. 
         // for (let i = 0; i > createCard.length; i ++);
@@ -405,15 +403,13 @@ const createCard = (word) => {
 
 
 // })
-=======
     console.log("Create card for word "+ word);
-    gifURL = queryGiphyAPI(word);
+    // gifURL = queryGiphyAPI(word);
 
 
 
 
 }
->>>>>>> 536d15c7bd93787beaef6c2ac28af74ddaa62dae
 
 /* 
 ########################################
@@ -430,8 +426,4 @@ Event Listeners here
 */
 inputEl.on("keyup", validateInput);
 
-<<<<<<< HEAD
-
-=======
 startBtn.addEventListener("click", startGame);
->>>>>>> 536d15c7bd93787beaef6c2ac28af74ddaa62dae
