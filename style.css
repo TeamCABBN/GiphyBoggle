@@ -93,6 +93,14 @@ body {
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
     margin-bottom: 1rem;
+    display: flex!important;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+.scoreSubBox h1 {
+    margin: 1rem!important;
 }
 
 .gifCardStorageBox {

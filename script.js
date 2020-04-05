@@ -25,6 +25,7 @@ const preGameEl = document.querySelector(".preGame");
 const duringGameEl = document.querySelector(".during-game");
 const afterGameModal = $(".modal.after-game");
 const playAgainBtn = document.querySelector(".play-again-btn");
+const endGameBtn = document.querySelector(".end-game-btn");
 
 //Modal elements
 const finalScoreEl = document.querySelector(".final-score");
@@ -426,3 +427,5 @@ inputEl.on("keyup", validateInput);
 startBtn.addEventListener("click", startGame);
 
 playAgainBtn.addEventListener("click", playAgain);
+
+endGameBtn.addEventListener("click", endGame);
