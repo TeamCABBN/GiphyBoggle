@@ -146,11 +146,11 @@ const timer = {
     //Fn to display secs to page
     display: function () {
         // console.log(this.currSecs);
-        let mins = Math.floor(this.currSecs/60);
+        let mins = Math.floor(this.currSecs / 60);
         let secs = this.currSecs % 60;
-        secs = secs<10? "0" + secs: secs;
+        secs = secs < 10 ? "0" + secs : secs;
         formattedString = mins + ":" + secs;
-        
+
         // timeEl.innerText = this.currSecs;
         timeEl.innerText = formattedString;
     }
@@ -237,14 +237,19 @@ const endGame = () => {
     finalScoreEl.innerText = score;
     wordsGuessedEl.innerText = correctWords.length;
     wordsUnguessedEl.innerText = answerWords.length;
-    percentGuessedEl.innerText = Math.round((correctWords.length / (answerWords.length+ correctWords.length))*100) + "%";
+    percentGuessedEl.innerText = Math.round((correctWords.length / (answerWords.length + correctWords.length)) * 100) + "%";
 
     unguessedWordsEl.innerHTML = "";
     answerWords.forEach(word => {
         unguessedWordsEl.innerHTML += `<p>${word.toUpperCase()}</p>`
     })
 
-    afterGameModal.modal({onHide: () => console.log("this")}).modal("show");
+    afterGameModal.modal({
+        onHide: () => {
+            duringGameEl.classList.add("hidden");
+            preGameEl.classList.remove("hidden");
+        }
+    }).modal("show");
 }
 
 //array depricator
@@ -262,35 +267,35 @@ function remove(enteredWord) {
 //Input checker
 //By Ben C
 const validateInput = (event) => {  // Ben F why have you used event here? Just wondering?
-    if(!gameRunning){
+    if (!gameRunning) {
         return;
     }
     console.log("Test");
     let enteredWord = inputEl.val().toLowerCase();
-    
+
     console.log("before", answerWords.length);
-    
+
     if (answerWords.includes(enteredWord)) {
         remove(enteredWord);
-        
+
         console.log("after", answerWords.length);
         console.log(enteredWord);
         inputEl.val("");
         createCard(enteredWord);
-        
+
         //Increase score
         let wordScore = 0;
         let wordlength = enteredWord.length;
-        
+
         if (wordlength < 3) {
             wordScore = 0;
-        }else if (wordlength < 4) {  // 3
+        } else if (wordlength < 4) {  // 3
             wordScore = 1;
-        }else if (wordlength < 5) {  // 4
+        } else if (wordlength < 5) {  // 4
             wordScore = 2;
-        }else if (wordlength < 6) {  // 5
+        } else if (wordlength < 6) {  // 5
             wordScore = 3;
-        }else if (wordlength < 7) {  // 6
+        } else if (wordlength < 7) {  // 6
             wordScore = 4;
         } else if (wordlength < 8) {  // 7
             wordScore = 5;
@@ -305,20 +310,20 @@ const validateInput = (event) => {  // Ben F why have you used event here? Just 
 //create card gipphy 
 const createCard = (word) => {
 
-        //note that the variable (and the output from the boggle is called "word")
-        var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&limit=1&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i`;
-    
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-            .then(function (response) {
-                console.log(response);
-    
-                let gifURL = response.data[0].images.original.url? response.data[0].images.original.url: "https://media3.giphy.com/media/xNBcChLQt7s9a/giphy.gif?cid=ecf05e47dded58718835a05dcae59e8c6c0ac476f4903097&rid=giphy.gif";
-                let wordTitle = word.toUpperCase();
+    //note that the variable (and the output from the boggle is called "word")
+    var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&limit=1&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i`;
 
-                let cardHTML = `
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    })
+        .then(function (response) {
+            console.log(response);
+
+            let gifURL = response.data[0].images.original.url ? response.data[0].images.original.url : "https://media3.giphy.com/media/xNBcChLQt7s9a/giphy.gif?cid=ecf05e47dded58718835a05dcae59e8c6c0ac476f4903097&rid=giphy.gif";
+            let wordTitle = word.toUpperCase();
+
+            let cardHTML = `
                 <div class="six wide mobile five wide tablet four wide computer column">
                                             <div class="ui fluid card gifCard">
                                                 <div >
@@ -332,70 +337,70 @@ const createCard = (word) => {
                                         </div>
                 `
 
-                let currentHTML = gifBoxContainer.innerHTML;
-                let newHtml = cardHTML + currentHTML;
+            let currentHTML = gifBoxContainer.innerHTML;
+            let newHtml = cardHTML + currentHTML;
 
-                gifBoxContainer.innerHTML = newHtml;
+            gifBoxContainer.innerHTML = newHtml;
 
-                // // set src attribute to images and append to html 
-                // var wordImage = $("<img>");
-                // wordImage.attr("img", gifURL);
-                // $(searchedWord).append(word);
-                // $(searchedWord).append(gifURL);
-                // console.log("Create card for word "+ word);
-                // console.log("create gif image" + gifURL);
-                // $("#gifs-appear-here").prepend(gifURL.word);
-            });
-            console.log(word);
+            // // set src attribute to images and append to html 
+            // var wordImage = $("<img>");
+            // wordImage.attr("img", gifURL);
+            // $(searchedWord).append(word);
+            // $(searchedWord).append(gifURL);
+            // console.log("Create card for word "+ word);
+            // console.log("create gif image" + gifURL);
+            // $("#gifs-appear-here").prepend(gifURL.word);
+        });
+    console.log(word);
 
-        // generating new cards. 
-        // for (let i = 0; i > createCard.length; i ++);
-        // searchedWord.innerText = createCard,
-        //  gifURL
-        
-
-
-                    //Old code,
-                // for (var i = 0; i < results.length; i++) {
-                //     var gifDiv = $("<div>");
-                //     var personImage = $("<img>");
-                //     personImage.attr("src", results[i].images.fixed_height.url);
-                //     gifDiv.prepend(personImage);
-                //     //note that the area that gifs appear (card?)
-                //     // $("#gifs-appear-here").prepend(gifDiv);
-                // }
-      
+    // generating new cards. 
+    // for (let i = 0; i > createCard.length; i ++);
+    // searchedWord.innerText = createCard,
+    //  gifURL
 
 
 
-// url will be returned from api plus word it represents.
-// filling in the cards with word and url of giff. Add fucntion that adds fucntion to the page. 
-
-//when user clicks submit (giphy click event)
-// // $(".searchedWord").on("click", function () {
-// console.log(searchedWord);
-// // // word property value being stored
-
-// //query URL of word 
-//     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-//     word + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-// // Ajax request with queryURL 
-// $.ajax({
-//     url: queryURL,
-//     method: "GET"
-// })
-
-// .then(function(response) {
-//     console.log(queryURL);
-//     console.log(response);
-
-//store requested data 
+    //Old code,
+    // for (var i = 0; i < results.length; i++) {
+    //     var gifDiv = $("<div>");
+    //     var personImage = $("<img>");
+    //     personImage.attr("src", results[i].images.fixed_height.url);
+    //     gifDiv.prepend(personImage);
+    //     //note that the area that gifs appear (card?)
+    //     // $("#gifs-appear-here").prepend(gifDiv);
+    // }
 
 
 
-// })
-    console.log("Create card for word "+ word);
+
+    // url will be returned from api plus word it represents.
+    // filling in the cards with word and url of giff. Add fucntion that adds fucntion to the page. 
+
+    //when user clicks submit (giphy click event)
+    // // $(".searchedWord").on("click", function () {
+    // console.log(searchedWord);
+    // // // word property value being stored
+
+    // //query URL of word 
+    //     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+    //     word + "&api_key=dc6zaTOxFJmzC&limit=10";
+
+    // // Ajax request with queryURL 
+    // $.ajax({
+    //     url: queryURL,
+    //     method: "GET"
+    // })
+
+    // .then(function(response) {
+    //     console.log(queryURL);
+    //     console.log(response);
+
+    //store requested data 
+
+
+
+    // })
+    console.log("Create card for word " + word);
     // gifURL = queryGiphyAPI(word);
 
 
