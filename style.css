@@ -105,11 +105,11 @@ body {
     background-image: linear-gradient(to bottom, #A291FB, violet);
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
-    min-height: 100%;
+    min-height: 200px;
 }
 
 .searchBar {
-    font-size: 3rem;
+    font-size: 2rem;
     background: none;
     border-bottom: 2px solid #ffe21f;
     border-top: none;
@@ -216,11 +216,19 @@ body {
 .gifCard {
     background-color: #1F262A !important;
     box-shadow: 0px 0px 8px 3px white !important;
-    border-radius: 7px 7px 26px 26px !important;
+    border-radius: 7px 7px 5px 5px !important;
+    height: 100%;
+}
+
+.gifCard .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .gifCard .header {
     color: #54c8ff !important;
+    text-align: center;
 }
 
 .spacer {

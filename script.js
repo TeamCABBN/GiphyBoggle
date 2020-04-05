@@ -324,20 +324,21 @@ const createCard = (word) => {
             .then(function (response) {
                 console.log(response);
     
-                let gifURL = response.data[0].images.original.url;
+                let gifURL = response.data[0].images.original.url? response.data[0].images.original.url: "https://media3.giphy.com/media/xNBcChLQt7s9a/giphy.gif?cid=ecf05e47dded58718835a05dcae59e8c6c0ac476f4903097&rid=giphy.gif";
+                let wordTitle = word.toUpperCase();
 
                 let cardHTML = `
-                <div class="column">
-                <div class="ui fluid card spacer">
-                    <div class="image">
-                        <img
-                            src="${gifURL}">
-                    </div>
-                    <div class="content">
-                        <p class="header">${word.toUpperCase()}</p>
-                    </div>
-                </div>
-            </div>
+                <div class="six wide mobile five wide tablet four wide computer column">
+                                            <div class="ui fluid card gifCard">
+                                                <div >
+                                                    <img class="ui image"
+                                                        src="${gifURL}">
+                                                </div>
+                                                <div class="content">
+                                                    <h3 class="header">${wordTitle}</h3>
+                                                </div>
+                                            </div>
+                                        </div>
                 `
 
                 let currentHTML = gifBoxContainer.innerHTML;
