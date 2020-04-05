@@ -6,13 +6,14 @@ Global variable declarations here
 
 //global answers array
 let answerWords = [];
-const correctWords = [];  //generates new array with correctly guessed words
+let correctWords = [];  //generates new array with correctly guessed words
 
 //global variable for random letters generated
 let letters = "";
 
 //Init score
 let score = 0;
+let gameRunning = false;
 
 //Page elements
 const inputEl = $("#search-bar");
@@ -22,7 +23,15 @@ const gifBoxContainer = document.querySelector(".gifCardStorageBox");
 const startBtn = document.querySelector(".startBtn");
 const preGameEl = document.querySelector(".preGame");
 const duringGameEl = document.querySelector(".during-game");
+const afterGameModal = $(".modal.after-game");
 const playAgainBtn = document.querySelector(".play-again-btn");
+
+//Modal elements
+const finalScoreEl = document.querySelector(".final-score");
+const wordsGuessedEl = document.querySelector(".words-guessed");
+const wordsUnguessedEl = document.querySelector(".words-unguessed");
+const percentGuessedEl = document.querySelector(".percentage-words");
+const unguessedWordsEl = document.querySelector(".unguessed-words");
 
 /* 
 ########################################
@@ -156,10 +165,14 @@ const startGame = (event) => {
     // startpage.classList.add("hidden");
     letters = randomLetterGenerator();
     score = 0;
+    scoreEl.innerText = 0;
+    gifBoxContainer.innerHTML = "";
+    correctWords = [];
     timer.reset();
     queryBoggleAPI(letters);
     BoggleBlocks(letters);
     timer.start();
+    gameRunning = true;
 };
 
 //Generates letters used in boggle from availble letters
@@ -214,49 +227,23 @@ const BoggleBlocks = (letters) => {
 }
 
 //End the Game function
-//By Nima
+//By Ben F
 const endGame = () => {
     timer.stop();
-    //do we need to hide/ unhide something here
-    //
-    //
-    //
-    //
-    var playerName = prompt("Type in your first name!")
-    var scoreboard = {
-        name: playerName,
-        score: score
-    }
-    // 
-    //
-    //
-    //
-    //
-    //get item current "score" and historical scores
-    var loadScores = localStorage.getItem("score")
-    //check for storage
-    if (loadScores) {
-        loadScores = JSON.parse(loadScores);
+    gameRunning = false;
 
-    } else {
-        loadScores = []
-    }
-    //push adds on to the existing array
-    loadScores.push(scoreboard);
-    console.log(loadScores);
-    //change to string
-    var loadScoresstring = JSON.stringify(loadScores);
-    console.log(loadScoresstring);
-    //send array back to local storage
-    localStorage.setItem("score", loadScoresstring);
-    //append list
+    //Fill modal elements
+    finalScoreEl.innerText = score;
+    wordsGuessedEl.innerText = correctWords.length;
+    wordsUnguessedEl.innerText = answerWords.length;
+    percentGuessedEl.innerText = Math.round((correctWords.length / (answerWords.length+ correctWords.length))*100) + "%";
 
-    loadScores.forEach(function (entry) {
-        //to construct html input for list 
-        var listhtml = "<li>" + entry.name + "  -  " + entry.score + "</li>";
-        //+ = appends to the end 
-        list.innerHTML += listhtml;
-    });
+    unguessedWordsEl.innerHTML = "";
+    answerWords.forEach(word => {
+        unguessedWordsEl.innerHTML += `<p>${word.toUpperCase()}</p>`
+    })
+
+    afterGameModal.modal({onHide: () => console.log("this")}).modal("show");
 }
 
 //array depricator
@@ -274,6 +261,9 @@ function remove(enteredWord) {
 //Input checker
 //By Ben C
 const validateInput = (event) => {  // Ben F why have you used event here? Just wondering?
+    if(!gameRunning){
+        return;
+    }
     console.log("Test");
     let enteredWord = inputEl.val().toLowerCase();
     
@@ -412,6 +402,12 @@ const createCard = (word) => {
 
 }
 
+const playAgain = (event) => {
+    afterGameModal.modal("hide");
+    duringGameEl.classList.add("hidden");
+    preGameEl.classList.remove("hidden");
+}
+
 /* 
 ########################################
 Code to run on page load
@@ -428,3 +424,5 @@ Event Listeners here
 inputEl.on("keyup", validateInput);
 
 startBtn.addEventListener("click", startGame);
+
+playAgainBtn.addEventListener("click", playAgain);
