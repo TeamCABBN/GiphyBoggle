@@ -11,7 +11,7 @@ AS A USER WHO IS LOOKING TO WASTE TIME I WANT TO BE ABLE TO PLAY A WORD GAME AND
 ## [View Here](https://teamcabbn.github.io/GiphyBoggle/)
 
 ## Screenshot
-![Image description](Screenshot1.png)
+![Image description](Screenshot2.png)
 
 ## Technology
 * BOGGLE API
