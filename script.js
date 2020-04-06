@@ -306,7 +306,7 @@ const validateInput = (event) => {
 const createCard = (word) => {
 
     //note that the variable (and the output from the boggle is called "word")
-    var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&limit=1&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i`;
+    var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&limit=1&rating=g&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i`;
 
     $.ajax({
         url: queryURL,
