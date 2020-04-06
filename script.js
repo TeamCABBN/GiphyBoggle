@@ -27,6 +27,9 @@ const afterGameModal = $(".modal.after-game");
 const playAgainBtn = document.querySelector(".play-again-btn");
 const endGameBtn = document.querySelector(".end-game-btn");
 
+const clearBtn = document.querySelector("#clear-btn");
+
+
 const boggleButtons = $(".boggleButton");
 
 //Modal elements
@@ -391,3 +394,7 @@ boggleButtons.on("click", function() {
     inputEl.val(inputEl.val() + clickedLetter);
     validateInput();
 });
+
+clearBtn.addEventListener("click", () => {
+    inputEl.val("");
+})
