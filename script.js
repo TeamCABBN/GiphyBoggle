@@ -262,12 +262,8 @@ function remove(enteredWord) {
 
 //Input Validator
 //By Ben C
-<<<<<<< HEAD
-const validateInput = (event) => { // Ben F why have you used event here? Just wondering?
-=======
 const validateInput = (event) => {
 
->>>>>>> 623d8b9bbd7b3259c68ed32218621335546c0be8
     if (!gameRunning) {
         return;
     }
@@ -309,12 +305,8 @@ const validateInput = (event) => {
 }
 
 
-<<<<<<< HEAD
-//create card gipphy 
-=======
 //Create cards with Gifs and word in them
 //By Ben F and Claire
->>>>>>> 623d8b9bbd7b3259c68ed32218621335546c0be8
 const createCard = (word) => {
 
     //note that the variable (and the output from the boggle is called "word")
