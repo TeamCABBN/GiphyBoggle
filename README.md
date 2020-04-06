@@ -3,10 +3,10 @@
 AS A USER WHO IS LOOKING TO WASTE TIME I WANT TO BE ABLE TO PLAY A WORD GAME AND GET A GIF THAT WILL ENTERTAIN ME SO THAT I CAN STILL BE HAPPY AND WASTE SOME TIME IN A FUN WAY WHILE I’M SOCIAL DISTANCING
 
 ## Usage 
-* Grid of words is presented. 
+* Grid of letters is presented. 
 * Users have to enter in a word
-* If yjay word is in the boogle API
-* then user gets a gif.
+* If that word is in the boogle API
+* Then user gets a gif.
 
 ## [View Here](https://teamcabbn.github.io/GiphyBoggle/)
 
@@ -26,7 +26,7 @@ AS A USER WHO IS LOOKING TO WASTE TIME I WANT TO BE ABLE TO PLAY A WORD GAME AND
 * Slack and Zoom conversations
 * Github Kanban board
 * Group Github; Master html, css, and script 
-* git clone, pull, add, commit, push
+* Git clone, pull, add, commit, push
 
 ## Tasks
 * HTML structure
