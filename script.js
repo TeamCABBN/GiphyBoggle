@@ -27,6 +27,8 @@ const afterGameModal = $(".modal.after-game");
 const playAgainBtn = document.querySelector(".play-again-btn");
 const endGameBtn = document.querySelector(".end-game-btn");
 
+const boggleButtons = $(".boggleButton");
+
 //Modal elements
 const finalScoreEl = document.querySelector(".final-score");
 const wordsGuessedEl = document.querySelector(".words-guessed");
@@ -259,6 +261,7 @@ function remove(enteredWord) {
 //Input Validator
 //By Ben C
 const validateInput = (event) => {
+
     if (!gameRunning) {
         return;
     }
@@ -356,6 +359,10 @@ const godMode = () => {
     console.table(answerWords);
 }
 
+
+
+
+
 /* 
 ########################################
 Code to run on page load
@@ -376,3 +383,10 @@ startBtn.addEventListener("click", startGame);
 playAgainBtn.addEventListener("click", playAgain);
 
 endGameBtn.addEventListener("click", endGame);
+
+boggleButtons.on("click", function() {
+    let clickedLetter = $(this).text();
+
+    inputEl.val(inputEl.val() + clickedLetter);
+    validateInput();
+});
