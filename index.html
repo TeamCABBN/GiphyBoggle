@@ -37,7 +37,6 @@
             <div class="ui stackable sixteen column grid">
 
                 <!--Container for the Boggle 4x4 letter grid-->
-
                 <div class="six wide column boggle-column">
                     <div class="sixteen wide column gameGridBox">
                         <div class="ui grid inner-grid-container">
@@ -126,13 +125,13 @@
 
                         <div class="ui grid">
                             <div class="sixteen wide column">
-                                <input type="text" class="searchBar" value=""
-                                    placeholder="Type the words you see here..." id="search-bar">
-                                <button class="customIcon"><i class="fas fa-search"></i></button>
+                                <input type="text" class="searchBar" value="" placeholder="Type here..."
+                                    id="search-bar">
+                                <button class="customIcon" data-content="clear" id="clear-btn"><i
+                                        class="fas fa-backspace"></i></button>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="ten wide column during-game hidden">
@@ -141,20 +140,17 @@
                             <div class="sixteen wide column scoreSubBox">
                                 <h1 class="ui yellow inverted header">TIME: <span class="time-display">180</span></h1>
                                 <h1 class="ui yellow inverted header">SCORE: <span class="score-display">0</span></h1>
-                                <button class="ui inverted primary button end-game-btn">End Game</button>
+                                <button class="ui inverted red button end-game-btn">End Game</button>
                             </div>
                         </div>
                         <div class="ui grid">
                             <div class="sixteen wide column gifBox">
                                 <h1 class="ui blue inverted header">FOUND WORDS BELOW</h1>
-                                <div class="">
-                                    <div class="">
-                                    <div class="ui centered grid gifCardStorageBox">
+                                <div class="ui centered grid gifCardStorageBox">
 
-                                    </div>
+
+
                                 </div>
-                                </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -211,7 +207,7 @@
             <div class="btn-container">
                 <button class="ui inverted green button play-again-btn">Play again</button>
             </div>
-            
+
         </div>
     </div>
     <script src="./script.js"></script>

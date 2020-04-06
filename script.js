@@ -6,7 +6,7 @@ Global variable declarations here
 
 //global answers array
 let answerWords = [];
-let correctWords = [];  //generates new array with correctly guessed words
+let correctWords = []; //generates new array with correctly guessed words
 
 //global variable for random letters generated
 let letters = "";
@@ -227,6 +227,8 @@ const BoggleBlocks = (letters) => {
     }
 }
 
+
+
 //End the Game function
 //By Ben F
 const endGame = () => {
@@ -266,7 +268,7 @@ function remove(enteredWord) {
 
 //Input checker
 //By Ben C
-const validateInput = (event) => {  // Ben F why have you used event here? Just wondering?
+const validateInput = (event) => { // Ben F why have you used event here? Just wondering?
     if (!gameRunning) {
         return;
     }
@@ -289,24 +291,25 @@ const validateInput = (event) => {  // Ben F why have you used event here? Just 
 
         if (wordlength < 3) {
             wordScore = 0;
-        } else if (wordlength < 4) {  // 3
+        } else if (wordlength < 4) { // 3
             wordScore = 1;
-        } else if (wordlength < 5) {  // 4
+        } else if (wordlength < 5) { // 4
             wordScore = 2;
-        } else if (wordlength < 6) {  // 5
+        } else if (wordlength < 6) { // 5
             wordScore = 3;
-        } else if (wordlength < 7) {  // 6
+        } else if (wordlength < 7) { // 6
             wordScore = 4;
-        } else if (wordlength < 8) {  // 7
+        } else if (wordlength < 8) { // 7
             wordScore = 5;
-        }
-        else {
+        } else {
             wordScore = 6;
         }
         score += wordScore;
         scoreEl.innerText = score;
     }
 }
+
+
 //create card gipphy 
 const createCard = (word) => {
 
@@ -314,9 +317,9 @@ const createCard = (word) => {
     var queryURL = `https://api.giphy.com/v1/gifs/search?q=${word}&limit=1&api_key=kqQyG8Y7gjqsyjEcFmZd3qBhbj2KBn5i`;
 
     $.ajax({
-        url: queryURL,
-        method: "GET"
-    })
+            url: queryURL,
+            method: "GET"
+        })
         .then(function (response) {
             console.log(response);
 
@@ -325,17 +328,17 @@ const createCard = (word) => {
 
             let cardHTML = `
                 <div class="six wide mobile five wide tablet four wide computer column">
-                                            <div class="ui fluid card gifCard">
+                <div class="ui fluid card gifCard">
                                                 <div >
-                                                    <img class="ui image"
-                                                        src="${gifURL}">
+                                                <img class="ui image"
+                                                src="${gifURL}">
                                                 </div>
                                                 <div class="content">
                                                     <h3 class="header">${wordTitle}</h3>
                                                 </div>
-                                            </div>
+                                                </div>
                                         </div>
-                `
+                                        `
 
             let currentHTML = gifBoxContainer.innerHTML;
             let newHtml = cardHTML + currentHTML;

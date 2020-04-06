@@ -4,7 +4,6 @@ html {
 
 body {
     height: 100%;
-    min-height: 100vw;
     background-image: linear-gradient(to bottom right, #c6ffdd, #fbd786, #f7797d);
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -31,23 +30,23 @@ body {
     padding-left: 1rem;
 
     margin-top: 0rem;
-    margin-bottom: 1rem!important;
+    margin-bottom: 1rem !important;
     background-color: #1F262A;
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
 }
 
 .inner-grid-container {
-    padding: 1rem!important;
+    padding: 1rem !important;
 }
 
 .boggleBox {
-    padding: 0!important;
+    padding: 0 !important;
     width: 25%;
-    padding-bottom: 25%!important;
+    padding-bottom: 25% !important;
     position: relative;
     box-sizing: border-box;
-    margin:0!important;
+    margin: 0 !important;
 
 }
 
@@ -66,10 +65,10 @@ body {
     box-sizing: border-box;
     height: 100%;
     width: 100%;
-    margin: 0!important;
-    min-width: 0!important;
-    font-size: 200%!important;
-    padding: 0!important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    font-size: 200% !important;
+    padding: 0 !important;
     text-align: center;
 }
 
@@ -93,14 +92,16 @@ body {
     border-radius: 7px;
     box-shadow: 0px 0px 8px 3px #A291FB;
     margin-bottom: 1rem;
-    display: flex!important;
+    display: flex !important;
     flex-direction: row;
     justify-content: space-evenly;
     align-content: center;
 }
 
+
 .scoreSubBox h1 {
-    margin: 1rem!important;
+    margin: 1rem !important;
+    text-align: center !important;
 }
 
 .gifCardStorageBox {
@@ -111,8 +112,7 @@ body {
     padding-right: 1rem;
     margin-top: 0rem;
     background-image: linear-gradient(to bottom, #A291FB, violet);
-    border-radius: 7px;
-    box-shadow: 0px 0px 8px 3px #A291FB;
+    border-radius: 0px 0px 7px 7px;
     min-height: 200px;
 }
 
@@ -123,7 +123,7 @@ body {
     border-top: none;
     border-left: none;
     border-right: none;
-    width: 89%;
+    width: 82%;
     color: #fbd786;
 }
 
@@ -134,6 +134,7 @@ body {
     font-size: 3rem;
     width: 10%;
     height: 10%;
+    justify-self: center;
 
 }
 
@@ -182,10 +183,10 @@ body {
 }
 
 .after-game>.content {
-    background: #1F262A!important;
+    background: #1F262A !important;
 }
 
-.after-game>.content>p{
+.after-game>.content>p {
     font-size: 2rem;
 }
 
@@ -208,7 +209,7 @@ body {
 }
 
 .play-again-btn {
-    margin-top: 15px!important;
+    margin-top: 15px !important;
     width: 33%;
 }
 
@@ -241,4 +242,51 @@ body {
 .spacer {
     margin-left: 0rem !important;
     margin-right: 0rem !important;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Taken from https://www.w3schools.com/howto/howto_css_bullet_color.asp */
+ul li::before {
+    content: "\2022";
+    /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #ffe21f !important;
+    /* Change the color */
+    font-weight: bold;
+    /* If you want it to be bold */
+    display: inline-block;
+    /* Needed to add space between the bullet and the text */
+    width: 1em;
+    /* Also needed for space (tweak if needed) */
+    margin-left: -1em;
+    /* Also needed for space (tweak if needed) */
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        padding-bottom: 1rem !important;
+    }
+
+    .outermost {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+    }
+
+    .headerBox {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+        padding-left: 0.2rem !important;
+        padding-right: 0.2rem !important;
+    }
+
+    .scoreSubBox h1 {
+        font-size: 140% !important;
+    }
+
+
+    .customIcon {
+        font-size: 200%;
+    }
 }
