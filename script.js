@@ -61,7 +61,7 @@ const queryBoggleAPI = (letters) => {
         success: (response) => {
 
             //Testing
-            console.log(response);
+            // console.log(response);
             //output.innerText = "";
 
             //For each word in response array convert to lowercase then push to global answer words array
@@ -73,22 +73,15 @@ const queryBoggleAPI = (letters) => {
             });
 
             //Testing
-            console.log(answerWords);
+            // console.log(answerWords);
 
         },
         //Function to run on error
         error: (xhr, status, error) => {
-            console.log(`status: ${status}, Error: ${error}`);
+            // console.log(`status: ${status}, Error: ${error}`);
         }
     });
 }
-
-//Function to query Gify API
-//By Nima
-//Have two here to choose between.
-//Giphy API for just a search
-//what will trigger this? i've used button below
-
 
 //Timer object
 //By Ben F
@@ -155,7 +148,6 @@ const timer = {
         timeEl.innerText = formattedString;
     }
 }
-
 
 // creating a function for start button and to reveal boggle containers
 //By Nima
@@ -252,34 +244,34 @@ const endGame = () => {
     }).modal("show");
 }
 
-//array depricator
+//Function to remove guessed words from available words
 //By Ben C
-//creates new array with correctly guessed words removed - also creates a new array of corect words
+//Creates new array with correctly guessed words removed - also creates a new array of corect words
 function remove(enteredWord) {
     let index = answerWords.indexOf(enteredWord);
-    console.log(index);
+    // console.log(index);
     if (index !== -1) {
         answerWords.splice(index, 1);
         correctWords.push(enteredWord);
     }
 }
 
-//Input checker
+//Input Validator
 //By Ben C
-const validateInput = (event) => {  // Ben F why have you used event here? Just wondering?
+const validateInput = (event) => {
     if (!gameRunning) {
         return;
     }
-    console.log("Test");
+    // console.log("Test");
     let enteredWord = inputEl.val().toLowerCase();
 
-    console.log("before", answerWords.length);
+    // console.log("before", answerWords.length);
 
     if (answerWords.includes(enteredWord)) {
         remove(enteredWord);
 
-        console.log("after", answerWords.length);
-        console.log(enteredWord);
+        // console.log("after", answerWords.length);
+        // console.log(enteredWord);
         inputEl.val("");
         createCard(enteredWord);
 
@@ -307,7 +299,10 @@ const validateInput = (event) => {  // Ben F why have you used event here? Just 
         scoreEl.innerText = score;
     }
 }
-//create card gipphy 
+
+
+//Create cards with Gifs and word in them
+//By Ben F and Claire
 const createCard = (word) => {
 
     //note that the variable (and the output from the boggle is called "word")
@@ -318,7 +313,7 @@ const createCard = (word) => {
         method: "GET"
     })
         .then(function (response) {
-            console.log(response);
+            // console.log(response);
 
             let gifURL = response.data[0].images.original.url ? response.data[0].images.original.url : "https://media3.giphy.com/media/xNBcChLQt7s9a/giphy.gif?cid=ecf05e47dded58718835a05dcae59e8c6c0ac476f4903097&rid=giphy.gif";
             let wordTitle = word.toUpperCase();
@@ -342,76 +337,23 @@ const createCard = (word) => {
 
             gifBoxContainer.innerHTML = newHtml;
 
-            // // set src attribute to images and append to html 
-            // var wordImage = $("<img>");
-            // wordImage.attr("img", gifURL);
-            // $(searchedWord).append(word);
-            // $(searchedWord).append(gifURL);
-            // console.log("Create card for word "+ word);
-            // console.log("create gif image" + gifURL);
-            // $("#gifs-appear-here").prepend(gifURL.word);
         });
-    console.log(word);
-
-    // generating new cards. 
-    // for (let i = 0; i > createCard.length; i ++);
-    // searchedWord.innerText = createCard,
-    //  gifURL
-
-
-
-    //Old code,
-    // for (var i = 0; i < results.length; i++) {
-    //     var gifDiv = $("<div>");
-    //     var personImage = $("<img>");
-    //     personImage.attr("src", results[i].images.fixed_height.url);
-    //     gifDiv.prepend(personImage);
-    //     //note that the area that gifs appear (card?)
-    //     // $("#gifs-appear-here").prepend(gifDiv);
-    // }
-
-
-
-
-    // url will be returned from api plus word it represents.
-    // filling in the cards with word and url of giff. Add fucntion that adds fucntion to the page. 
-
-    //when user clicks submit (giphy click event)
-    // // $(".searchedWord").on("click", function () {
-    // console.log(searchedWord);
-    // // // word property value being stored
-
-    // //query URL of word 
-    //     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    //     word + "&api_key=dc6zaTOxFJmzC&limit=10";
-
-    // // Ajax request with queryURL 
-    // $.ajax({
-    //     url: queryURL,
-    //     method: "GET"
-    // })
-
-    // .then(function(response) {
-    //     console.log(queryURL);
-    //     console.log(response);
-
-    //store requested data 
-
-
-
-    // })
-    console.log("Create card for word " + word);
-    // gifURL = queryGiphyAPI(word);
-
-
-
-
+    // console.log(word);
+    // console.log("Create card for word " + word);
 }
 
+//Function to run when play again btn clicked
+//By Ben F
 const playAgain = (event) => {
     afterGameModal.modal("hide");
     duringGameEl.classList.add("hidden");
     preGameEl.classList.remove("hidden");
+}
+
+//Function to print out all available words for testing, only meant to be typed into console
+//By Ben F
+const godMode = () => {
+    console.table(answerWords);
 }
 
 /* 
