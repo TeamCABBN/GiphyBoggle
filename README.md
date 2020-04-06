@@ -4,9 +4,9 @@ AS A USER WHO IS LOOKING TO WASTE TIME I WANT TO BE ABLE TO PLAY A WORD GAME AND
 
 ## Usage 
 * Grid of letters is presented. 
-* Users have to enter in a word
-* If that word is in the boogle API
-* Then user gets a gif.
+* Users have to enter words they see in the grid
+* If that word is a valid boggle word
+* Then user gets a gif
 
 ## [View Here](https://teamcabbn.github.io/GiphyBoggle/)
 
@@ -19,7 +19,7 @@ AS A USER WHO IS LOOKING TO WASTE TIME I WANT TO BE ABLE TO PLAY A WORD GAME AND
 * Javascript
 * CSS
 * HTML
-* Slack
+* Semantic UI
 * Github
 
 ## Method
@@ -32,12 +32,12 @@ AS A USER WHO IS LOOKING TO WASTE TIME I WANT TO BE ABLE TO PLAY A WORD GAME AND
 * HTML structure
 * CSS review
 * Presentation, Proposal and outlines
-* Javascript functions; start function, components, end function, boggle api, giphy api
+* Javascript functions; game state functions, boggle api query, Giphy api query
 * Compiling and debugging
 
 ## Authors
+* Claire Vandenberg
 * Alexander Waite
 * Benedict Cole
 * Ben Fawcett
-* Claire Vandenberg
 * Nima Sherpa
